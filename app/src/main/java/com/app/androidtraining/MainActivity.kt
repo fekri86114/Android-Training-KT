@@ -15,12 +15,54 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         onCheckBoxClicked()
+        onSwitchClicked()
 
-        binding.favoriteBtn.setOnClickListener {
+        binding.mainRadioGroup.setOnCheckedChangeListener { group, checkedId ->
 
-            binding.tehranCheckbox.isChecked = true
-            binding.ardabilCheckbox.isChecked = true
+            when (checkedId) {
 
+                R.id.radio_tehran -> {
+                    Toast.makeText(this, "You live in Tehran!!!!", Toast.LENGTH_SHORT).show()
+                }
+                R.id.radio_isfahan -> {
+                    Toast.makeText(this, "You live in Isfahan!!!", Toast.LENGTH_SHORT).show()
+                }
+                R.id.radio_ardabil -> {
+                    Toast.makeText(this, "You live in Ardabil!!", Toast.LENGTH_SHORT).show()
+                }
+                R.id.radio_other -> {
+                    Toast.makeText(this, "????", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        }
+
+//        binding.favoriteBtn.setOnClickListener {
+//
+//            binding.tehranCheckbox.isChecked = true
+//            binding.ardabilCheckbox.isChecked = true
+//
+//        }
+    }
+
+    private fun onSwitchClicked() {
+        binding.switchBluetooth.setOnCheckedChangeListener { _, isChecked ->
+
+            if (isChecked) {
+                Toast.makeText(this, "Bluetooth is connected!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Bluetooth is not connected!", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        
+        binding.switchWifi.setOnCheckedChangeListener { _, isChecked -> 
+            if (isChecked) {
+                Toast.makeText(this, "Wifi is connected!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Wifi is not connected!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
